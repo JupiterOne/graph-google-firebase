@@ -8,6 +8,12 @@ and this project adheres to
 
 ## [Unreleased]
 
+### Fixed
+
+- Fixed a bug where `getStepStartStates` method was importing
+  `serializedIntegrationConfig` from `test/config` instead from
+  `instance.config`.
+
 ## 1.0.0 - 2022-08-30
 
 ### Added

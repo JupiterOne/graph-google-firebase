@@ -6,7 +6,6 @@ import {
 import { SerializedIntegrationConfig } from './types';
 import { Steps } from './steps/constants';
 import { deserializeIntegrationConfig } from './utils/integrationConfig';
-import { serializedIntegrationConfig } from '../test/config';
 
 function validateInvocationConfig(
   context: IntegrationExecutionContext<SerializedIntegrationConfig>,
@@ -24,7 +23,8 @@ function validateInvocationConfig(
 export default async function getStepStartStates(
   context: IntegrationExecutionContext<SerializedIntegrationConfig>,
 ): Promise<StepStartStates> {
-  const { logger } = context;
+  const { instance, logger } = context;
+  const { config: serializedIntegrationConfig } = instance;
 
   context.instance.config = deserializeIntegrationConfig(
     serializedIntegrationConfig,
