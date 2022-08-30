@@ -8,6 +8,8 @@ and this project adheres to
 
 ## [Unreleased]
 
+## 1.0.1 - 2022-08-30
+
 ### Fixed
 
 - Fixed a bug where `getStepStartStates` method was importing
