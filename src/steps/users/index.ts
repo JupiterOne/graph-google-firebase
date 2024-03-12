@@ -55,7 +55,7 @@ export async function fetchUsers({
       } catch (err) {
         logger.error({
           message: `Error fetching users for project ${projectEntity.key}`,
-          error: err,
+          error: err._cause.error,
         });
 
         if (err.code === 'PROVIDER_AUTHORIZATION_ERROR') {
