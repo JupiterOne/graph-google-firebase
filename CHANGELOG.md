@@ -8,8 +8,6 @@ and this project adheres to
 
 ## [Unreleased]
 
-## 1.0.2 - 2024-03-12
-
 ### Added
 
 - Log the error associated to fetch-user missing permissions.
