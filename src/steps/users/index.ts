@@ -5,7 +5,7 @@ import {
 } from '@jupiterone/integration-sdk-core';
 
 import { IntegrationConfig } from '../../config';
-import { Steps, Entities, Relationships } from '../constants';
+import { Entities, Relationships, Steps } from '../constants';
 import { CloudAssetClient } from './client';
 import {
   createProjectUserRelationship,
@@ -53,11 +53,17 @@ export async function fetchUsers({
           },
         );
       } catch (err) {
-        if (err.code === 'PROVIDER_AUTHORIZATION_ERROR')
+        logger.error({
+          message: `Error fetching users for project ${projectEntity.key}`,
+          error: err,
+        });
+
+        if (err.code === 'PROVIDER_AUTHORIZATION_ERROR') {
           logger.publishWarnEvent({
             name: IntegrationWarnEventName.MissingPermission,
             description: `"cloudasset.assets.searchAllIamPolicies" is not a required permission to run the Firebase integration, but is required for step "fetch-users"`,
           });
+        }
       }
     },
   );
